@@ -1,5 +1,3 @@
-*** Note: this readme is not linked with the HackMD file, I need to be added as a collaborator in order to do that I think ***
-
 Original App Design Project - README Template
 ===
 
@@ -13,7 +11,6 @@ Original App Design Project - README Template
 
 ## Overview
 ### Description
-[Description of your app]
 Distributed Fruit Market connects people who have fruit trees  with people who want locally-grown organic fruit.
 Fruit trees produce a lot of fruit, usually more than one family can use. Rather than have the fruit rot, Distributed Fruit Market can eliminate this waste. 
 
@@ -33,24 +30,27 @@ Question/thought: Should all users have ability to sell, or should users be sepa
 Idea: Shoppers and Producers have:
     Profile: Picture, description/intro, instructions, Reviews/ratings (stars), location, 
 
-    Necessary:
-    - Map View: Have a map of where the fruit trees (producers) are located
-    - Can rate sellers and fruit
-    - Profile with pics of fruit and tree 
-    - Search function with filters (species of fruit, rating, price, distance )
-    - 
+   Necessary:
+    
+* Can rate sellers and fruit
+* Map View: Have a map of where the fruit trees (producers) are located, and where the user is located (GPS and Map Layer) Fruit Trees are represented by icons of the trees. Clicking on an icon would open up the profile of the owner along with associated information (Name of owner, picture of fruit, Rating of Fruit/Owner, price of resource, times available?) Fruiting Season
+* Profile with pics of fruit and tree 
+* Search function with filters (species of fruit, rating, price, distance
+* Option to view from both the buyer and seller's perspective
+* User (Forager) can see a map view of resources (fruit trees) in the area
     
     Nice-to-have:
-    - List View (compiles a list) of resources within a given time/distance range
-    - options for donation of fruit (link to charities, etc.)
-    - options for trading of fruit
-    - add a messaging option (for questions and planning a pick-up time)
-    - vegetables (could be like a farmers market app)
-    -option 
-    - Preferred range of fruit sellers (0 - 20 mi radius or within an hour's drive or something)
-    - Can have realtime updates and push notifications
-    - Home-made honey, chicken eggs, goat products, any food product someone may be making at home.
     
+* List View (compiles a list) of resources within a given time/distance range (Like search function on google maps)
+* options for donation of fruit (link to charities, etc.)
+* options for trading of fruit
+* add a messaging option (for questions and planning a pick-up time)
+* vegetables (could be like a farmers market app)
+* Preferred range of fruit sellers (0 - 20 mi radius or within an hour's drive or something)
+* Can have realtime updates and push notifications
+* Home-made honey, chicken eggs, goat products, any food product someone may be making at home.
+* Payment: Link App to producers Bank account, Shoppers send payments through app, Can be held in escrow until fulfillment of each party's obligations
+* Have a grubhub-type functionality that allows drivers to purchase and deliver fruit
     
     
 
@@ -61,6 +61,7 @@ Idea: Shoppers and Producers have:
 - **Category:**
     - Map & selling app?
     - Social/ Market App
+    - Food and Drink
 - **Mobile:**
     - Will have many components that are visual and intuitive
     - The in app experience is more streamlined than a website. Since the app is meant to be used on mobile devices, the UX should be simple enough to navigate easily on a mobile device (big buttons, retractable sidebars)
@@ -91,37 +92,56 @@ Idea: Shoppers and Producers have:
 
 **Required Must-have Stories**
 
-* [fill in your required user stories here]
-* ...
-* Map View: Have a map of where the fruit trees (producers) are located, and where the user is located (GPS and Map Layer) Fruit Trees are represented by icons of the trees. Clicking on an icon would open up the profile of the owner along with associated information (Name of owner, picture of fruit, Rating of Fruit/Owner, price of resource, times available?)
-* Can rate sellers and fruit
-* Profile with pics of fruit and tree 
-* Search function with filters (species of fruit, rating, price, distance
-* Option to view from both the buyer and seller's perspective
+* User (Forager) can create an account
+* User (Forager) can update profile
+* User (Forager) Sees a map view of resources in area
+* User (Forager) can select a resource
+* User (Forager) can see data of that specific resource
+* User (Forager) can search for a type of resource
+* User (Forager) can apply filters to search
+* User (Producer) can create an account
+* User (producer) can update profile
+* User (producer) can add different resources to profile
+
 
 
 **Optional Nice-to-have Stories**
 
-* [fill in your optional user stories here]
-* List View (compiles a list) of resources within a given time/distance range (Like search function on google maps)
-* options for donation of fruit (link to charities, etc.)
-* options for trading of fruit
-* add a messaging option (for questions and planning a pick-up time)
-* vegetables (could be like a farmers market app)
-* Preferred range of fruit sellers (0 - 20 mi radius or within an hour's drive or something)
-* Can have realtime updates and push notifications
-* Home-made honey, chicken eggs, goat products, any food product someone may be making at home.
-* Payment: Link App to producers Bank account, Shoppers send payments through app, Can be held in escrow until fulfillment of each party's obligations
-* Have a grubhub-type functionality that allows drivers to purchase and deliver fruit
+* User (Forager) Can message producer
+* User (Forager) can see a comparative price for the same item at a nearby grocery store
+* User (Forager) can see a list view of relevant resources
+* User (Forager) can rate sellers and fruit
+* User (Forager/Producer) can follow/unfollow another user
+
+
 
 ### 2. Screen Archetypes
 
 * [list first screen here]
    * [list associated required story here]
    * ...
-* [list second screen here]
-   * [list associated required story here]
-   * ...
+   * Login Screen
+       * User can login
+   * Registration Screen
+       * User can create new account
+   * Map Screen
+       * User can see what resources are being offered/available in the area 
+       * User can select a resource
+   * Resource Screen (popup?)
+       * User can view information of a resource
+   * Account/Profile Screen
+       * User can update profile
+       * User (producer) can add different resources to profile
+   * Search Screen
+       * User can search for a specific resource
+   * Filter Screen
+       * User can apply filters to search
+   * 
+   * 
+   * 
+   * 
+   * 
+   * 
 
 ### 3. Navigation
 
@@ -130,7 +150,8 @@ Idea: Shoppers and Producers have:
 -Essentials for tabs: 
 1) map with search function
 2) messages, inbox/notifications
-3) profile, with picture, rating, fruit preferences, settings and app preferences too maybe
+3) profile, with picture, rating, fruit preferences
+4) App Preferences/ Settings
 
 * first tab: map perhaps with search function (could also have list view, prioritizing things that are super close)
 * second tab:
@@ -138,12 +159,23 @@ Idea: Shoppers and Producers have:
 
 **Flow Navigation** (Screen to Screen)
 
-* [list first screen here]
-   * [list screen navigation here]
-   * ...
-* [list second screen here]
-   * [list screen navigation here]
-   * ...
+* Map Screen
+    * => List View (Optional for first iteration) Options from list view should be similar/same as choices from map view
+    * => (By clicking on fruit icon on map) Fruit/Owner info
+       * => Buy Screen
+           * => Map Screen
+           * Quantity (weight/mass)
+           * Display Cost
+           * Estimated time of Pickup/Availability (Or option for delivery)
+    * => Message Inbox
+        * => Map Screen
+        * => Create new message: to who?
+        * scroll through existing messages
+   
+    * => Settings/App Preferences
+       * => Map Screen
+       * Settings options
+
 
 ## Wireframes
 [Add picture of your hand sketched wireframes in this section]
@@ -157,7 +189,18 @@ Idea: Shoppers and Producers have:
 [This section will be completed in Unit 9]
 ### Models
 [Add table of models]
+
+
+
 ### Networking
 - [Add list of network requests by screen ]
+* Login screen
+* Fruit map
+* Messages screen
+* Profile screen
+
 - [Create basic snippets for each Parse network request]
+
+
 - [OPTIONAL: List endpoints if using existing API such as Yelp]
+
