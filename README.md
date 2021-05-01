@@ -178,29 +178,152 @@ Idea: Shoppers and Producers have:
 
 
 ## Wireframes
-[Add picture of your hand sketched wireframes in this section]
-<img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
 
-### [BONUS] Digital Wireframes & Mockups
+### [BONUS x 2?] Digital Wireframes Interactive Prototype
+<img src='https://github.com/Distributed-Fruit-Tree/project/blob/main/ezgif.com-gif-maker%20(4).gif' title='Digital Wireframes Interactive Prototype' width='' alt='Video Walkthrough' />
 
-### [BONUS] Interactive Prototype
+
 
 ## Schema 
 [This section will be completed in Unit 9]
 ### Models
 [Add table of models]
+#### Fruit Listing
+
+   | Property      | Type     | Description |
+   | ------------- | -------- | ------------|
+   | objectId      | String   | unique id for the fruit listing post (default field) |
+   | author        | Pointer to User| image author |
+   | fruitType     | String   | type of fruit |
+   | image         | File     | image of the fruit that user posts |
+   | caption       | String   | image caption by author |
+   | price         | Float/String | the price per fruit or per pound |
+   | location       | ????   | location where the fruit is |
+   | createdAt     | DateTime | date when post is created (default field) |
+   | updatedAt     | DateTime | date when post is last updated (default field) |
+   | upvote/like   | Int      | number of people who have previously bought fruit and liked it? |
+
+#### User
+
+   | Property      | Type     | Description |
+   | ------------- | -------- | ------------|
+   | userId      | String   | unique id for the user (default field) |
+   | author        | Pointer to User| image author |
+   | createdAt     | DateTime | date when user made profile (default field) |
+   | image         | File     | user profile picture |
+   | rating        | Float     | average review rating for fruit listings by this person|
+   | reviews       | review object  | comments from previous buyers |
+   | location      | File     | location (for sellers) |
+   | following     | collection of user obj | the sellers that the user person is following (for buyers)|
+   | followers         | collection of user obj     | the buyers that are following a seller (for sellers) |
+   | message      | collection of message obj     | messages |
+
+#### Review
+
+   | Property      | Type     | Description |
+   | ------------- | -------- | ------------|
+   | objectId      | String   | unique id for the review post (default field) |
+   | post pointer?      | Fruit Listing pointer   | a pointer to the post/fruit listing |
+   | text      | String   | the written review for the purchase |
+   | rating      | Int   | a rating out of 5 |
+   | author        | Pointer to User| image author |
+   | recipient?        | Pointer to User| Pointer to User who sold the fruit |
+   
+   
+   
+#### Message (property of user obj)
+
+   | Property      | Type     | Description |
+   | ------------- | -------- | ------------|
+   | objectId      | String   | unique id for the message? (default field) |
+   | user         | user obj  | the user being messaged |
 
 
 
 ### Networking
 - [Add list of network requests by screen ]
-* Login screen
-* Fruit map
-* Messages screen
-* Profile screen
+- Log-in Screen / Create User Screen
+   | Request Type  | HTTP verb     | Description |
+   | ------------- | --------   | ------------|
+   | Create        | user obj?  | creating a new user profile|
+   | Update        | user obj?  | updating user profile|
+ 
 
+- Home / Map Screen
+   | Request Type  | HTTP verb     | Description |
+   | ------------- | --------   | ------------|
+   | Get           |    | get map     |
+
+- Messaging Screen
+   | Request Type  | HTTP verb     | Description |
+   | ------------- | --------   | ------------|
+   | Create        |    | creates and sends a new message    |
+   
+
+- Write a Review Screen (we don't have yet?)
+   | Request Type  | HTTP verb     | Description |
+   | ------------- | --------   | ------------|
+   | Create        |    | creates and posts a new review    |
+   
+   
+   
 - [Create basic snippets for each Parse network request]
+Creating new User
+```swift=
+//creating new user
 
+userId : String, author: String, createdAt: time, image : file, rating : float, review : reviewObj, location: file, following: collection of user obj, followers : collection of user obj, message : collection of message obj
+
+PFObject *newUser = [PFObject objectWithClassName:@"User"];
+User[@"userId"] = @id;
+gameScore[@"createdAt"] = @createdAt;
+gameScore[@"image"] = @pfp;
+gameScore[@"rating"] = @rating;
+gameScore[@"review"] = @review;
+gameScore[@"location"] = @location;
+gameScore[@"following"] = @usersFollowing;
+gameScore[@"followers"] = @usersFollowers;
+gameScore[@"message"] = @messages;
+[gameScore saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+  if (succeeded) {
+    // The object has been saved.
+  } else {
+    // There was a problem, check error.description
+  }
+}];
+
+```
+
+Query all nearby fruit listings???
+```swift
+         let query = PFQuery(className:"FruitListing")
+         query.whereKey("Location", within: currentUser.location.5_miles)
+         query.order(byDescending: "Review")
+         query.findObjectsInBackground { (FruitListing: [PFObject]?, error: Error?) in
+            if let error = error { 
+               print(error.localizedDescription)
+            } else if let FruitListings = FruitListings {
+               print("Successfully retrieved \(FruitListing.count) FruitListings.")
+           // TODO: Do something with fruit listings...
+            }
+         }
+```
+
+Query all messages?
+```swift
+         let query = PFQuery(className:"Message")
+         query.whereKey("author", equalTo: currentUser)
+         query.order(byDescending: "createdAt")
+         query.findObjectsInBackground { (Message: [PFObject]?, error: Error?) in
+            if let error = error { 
+               print(error.localizedDescription)
+            } else if let Messages = Messages {
+               print("Successfully retrieved \(Messages.count) Messages.")
+           // TODO: Do something with messages...
+            }
+         }
+```
+         
 
 - [OPTIONAL: List endpoints if using existing API such as Yelp]
 
