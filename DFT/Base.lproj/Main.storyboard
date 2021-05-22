@@ -74,14 +74,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5.5999999999999996" y="79.610194902548727"/>
+            <point key="canvasLocation" x="6" y="54"/>
         </scene>
         <!--Messages-->
         <scene sceneID="ohg-Hk-bAu">
             <objects>
                 <viewController id="Yas-xI-8MI" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="f4e-sI-9rX">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="BS2-zB-AKu"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -95,25 +95,39 @@
         <!--Map-->
         <scene sceneID="oic-Nz-bNv">
             <objects>
-                <viewController id="sE7-r1-V6C" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="mapViewController" id="sE7-r1-V6C" customClass="mapViewController" customModule="DFT" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4Ze-0z-5Da">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="3EV-qE-4oE">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </mapView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="1A8-7h-dYR"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="3EV-qE-4oE" secondAttribute="bottom" id="AXk-Ac-Juy"/>
+                            <constraint firstItem="3EV-qE-4oE" firstAttribute="leading" secondItem="1A8-7h-dYR" secondAttribute="leading" id="gTR-Td-LE1"/>
+                            <constraint firstItem="3EV-qE-4oE" firstAttribute="top" secondItem="1A8-7h-dYR" secondAttribute="top" id="l9T-zc-J6Z"/>
+                            <constraint firstItem="3EV-qE-4oE" firstAttribute="trailing" secondItem="1A8-7h-dYR" secondAttribute="trailing" id="oaJ-7D-sWD"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" id="njP-r8-gs6"/>
+                    <connections>
+                        <outlet property="mapView" destination="3EV-qE-4oE" id="XgR-PS-PHO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mbF-z9-uKh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1666" y="80"/>
+            <point key="canvasLocation" x="1664.8" y="53.523238380809602"/>
         </scene>
         <!--Profile-->
         <scene sceneID="IEU-fe-epI">
             <objects>
                 <viewController storyboardIdentifier="ProfileViewController" id="XNN-rG-ago" customClass="ProfileViewController" customModule="DFT" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6F3-P0-O13">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bjw-zw-TfC">
@@ -147,7 +161,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="5s8-BX-DFR">
             <objects>
-                <tabBarController id="Nzq-5n-LnP" sceneMemberID="viewController">
+                <tabBarController modalPresentationStyle="fullScreen" id="Nzq-5n-LnP" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="0ul-Dd-dLO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E87790B265984EE00AADA9F /* mapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E87790A265984EE00AADA9F /* mapViewController.swift */; };
 		37CB2A1568264A2527114061 /* Pods_DFT_DFTUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25791613F6536E560332C1AB /* Pods_DFT_DFTUITests.framework */; };
 		5A94DCBB40C1D9EA02268470 /* Pods_DFT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B95DA3D91C7435F21F4AD54 /* Pods_DFT.framework */; };
 		7D279C0A5BBDEF66B967755E /* Pods_DFTTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25D966E5CA5E885897CC82F /* Pods_DFTTests.framework */; };
@@ -41,6 +42,7 @@
 
 /* Begin PBXFileReference section */
 		0B95DA3D91C7435F21F4AD54 /* Pods_DFT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DFT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1E87790A265984EE00AADA9F /* mapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mapViewController.swift; sourceTree = "<group>"; };
 		22EB5D8289CF71B5FA8F34EE /* Pods-DFT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DFT.release.xcconfig"; path = "Target Support Files/Pods-DFT/Pods-DFT.release.xcconfig"; sourceTree = "<group>"; };
 		25791613F6536E560332C1AB /* Pods_DFT_DFTUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DFT_DFTUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		51BCA1E9A229A275C126610E /* Pods-DFT-DFTUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DFT-DFTUITests.release.xcconfig"; path = "Target Support Files/Pods-DFT-DFTUITests/Pods-DFT-DFTUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				E8BD6F4226471BEC00D5D27A /* Info.plist */,
 				E8B5F0C92650417D0056C55F /* LoginViewController.swift */,
 				E8B5F0DD26504EA40056C55F /* ProfileViewController.swift */,
+				1E87790A265984EE00AADA9F /* mapViewController.swift */,
 			);
 			path = DFT;
 			sourceTree = "<group>";
@@ -415,6 +418,7 @@
 				E8B5F0CA2650417D0056C55F /* LoginViewController.swift in Sources */,
 				E8BD6F3926471BE900D5D27A /* ViewController.swift in Sources */,
 				E8B5F0DE26504EA40056C55F /* ProfileViewController.swift in Sources */,
+				1E87790B265984EE00AADA9F /* mapViewController.swift in Sources */,
 				E8BD6F3526471BE900D5D27A /* AppDelegate.swift in Sources */,
 				E8BD6F3726471BE900D5D27A /* SceneDelegate.swift in Sources */,
 			);
