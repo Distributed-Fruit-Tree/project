@@ -10,61 +10,65 @@ import MapKit
 import CoreLocation
 
 class mapViewController: UIViewController {
-
+    
+    @IBOutlet weak var goButtonView: UIView!
+    @IBOutlet weak var addressView: UIView!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var goButton: UIButton!
     
     let locationManager = CLLocationManager()
-    let regionInMeters: Double = 10000
+    let regionInMeters: Double = 6000
     var previousLocation: CLLocation?
     
     let geoCoder = CLGeocoder()
     var directionsArray: [MKDirections] = []
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        goButton.layer.cornerRadius = goButton.frame.size.height/2
+        //addressLabel.text = "updating address..."
+        setupLayoutView()
+        // check to make sure user allows location use
         checkLocationServices()
     }
     
-    
+    // location permission stuff
     func setupLocationManager() {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
-    
-    
+    // zoom map view onto where user is located
     func centerViewOnUserLocation() {
         if let location = locationManager.location?.coordinate {
             let region = MKCoordinateRegion.init(center: location, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
             mapView.setRegion(region, animated: true)
         }
     }
-    
-    
+    // check to make sure user allows location use
     func checkLocationServices() {
         if CLLocationManager.locationServicesEnabled() {
+            // setup our location manager
             setupLocationManager()
             checkLocationAuthorization()
         } else {
-            // Show alert letting the user know they have to turn this on.
+            // show alert letting user know they need to turn this on
         }
     }
-    
-    
+    // what to do with certain user location permission
     func checkLocationAuthorization() {
         switch CLLocationManager.authorizationStatus() {
         case .authorizedWhenInUse:
-            startTackingUserLocation()
+            // do map stuff
+            // show little blue icon of where user is located on the map
+            startTrackingUserLocation()
         case .denied:
-            // Show alert instructing them how to turn on permissions
+            // show alert instructing user how to turn on permissions
             break
         case .notDetermined:
+            // ask permission
             locationManager.requestWhenInUseAuthorization()
+            break
         case .restricted:
-            // Show an alert letting them know what's up
+            // show alert letting user know it's restricted
             break
         case .authorizedAlways:
             break
@@ -73,14 +77,12 @@ class mapViewController: UIViewController {
         }
     }
     
-    
-    func startTackingUserLocation() {
+    func startTrackingUserLocation() {
         mapView.showsUserLocation = true
         centerViewOnUserLocation()
         locationManager.startUpdatingLocation()
         previousLocation = getCenterLocation(for: mapView)
     }
-    
     
     func getCenterLocation(for mapView: MKMapView) -> CLLocation {
         let latitude = mapView.centerCoordinate.latitude
@@ -89,10 +91,8 @@ class mapViewController: UIViewController {
         return CLLocation(latitude: latitude, longitude: longitude)
     }
     
-    
     func getDirections() {
         guard let location = locationManager.location?.coordinate else {
-            //TODO: Inform user we don't have their current location
             return
         }
         
@@ -101,55 +101,77 @@ class mapViewController: UIViewController {
         resetMapView(withNew: directions)
         
         directions.calculate { [unowned self] (response, error) in
-            //TODO: Handle error if needed
-            guard let response = response else { return } //TODO: Show response not available in an alert
+            
+            // to do: handle error
+            
+            guard let response = response else { return }
             
             for route in response.routes {
+                let steps = route.steps
                 self.mapView.addOverlay(route.polyline)
                 self.mapView.setVisibleMapRect(route.polyline.boundingMapRect, animated: true)
             }
         }
     }
     
-    
     func createDirectionsRequest(from coordinate: CLLocationCoordinate2D) -> MKDirections.Request {
-        let destinationCoordinate       = getCenterLocation(for: mapView).coordinate
-        let startingLocation            = MKPlacemark(coordinate: coordinate)
-        let destination                 = MKPlacemark(coordinate: destinationCoordinate)
+        let destinationCoordinate = getCenterLocation(for: mapView).coordinate
+        let startingLocation = MKPlacemark(coordinate: coordinate)
+        let destination = MKPlacemark(coordinate: destinationCoordinate)
         
-        let request                     = MKDirections.Request()
-        request.source                  = MKMapItem(placemark: startingLocation)
-        request.destination             = MKMapItem(placemark: destination)
-        request.transportType           = .automobile
+        let request = MKDirections.Request()
+        request.source = MKMapItem(placemark: startingLocation)
+        request.destination = MKMapItem(placemark: destination)
+        // request.transportType = .automobile
+        request.transportType = .walking
         request.requestsAlternateRoutes = true
         
         return request
     }
     
-    
     func resetMapView(withNew directions: MKDirections) {
         mapView.removeOverlays(mapView.overlays)
         directionsArray.append(directions)
         let _ = directionsArray.map { $0.cancel() }
+        // directionsArray.removeAll()
     }
-    
     
     @IBAction func goButtonTapped(_ sender: UIButton) {
         getDirections()
     }
+    
+    func setupLayoutView() {
+        addressView.layer.cornerRadius = 10
+        addressView.layer.shadowColor = UIColor.black.cgColor
+        addressView.layer.shadowOpacity = 0.7
+        addressView.layer.shadowOffset = CGSize(width: 0, height: 10)
+        addressView.layer.shadowRadius = 10
+        
+        goButtonView.layer.cornerRadius = goButtonView.frame.size.height/2
+        goButtonView.layer.shadowColor = UIColor.black.cgColor
+        goButtonView.layer.shadowOpacity = 0.6
+        goButtonView.layer.shadowOffset = CGSize(width: 0, height: 4)
+        goButtonView.layer.shadowRadius = 4
+    }
 }
 
-
 extension mapViewController: CLLocationManagerDelegate {
+    
+    /*
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let location = locations.last else { return }
+        let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        let region = MKCoordinateRegion.init(center: center, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
+        mapView.setRegion(region, animated: true)
+    }
+    */
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         checkLocationAuthorization()
     }
 }
 
-
 extension mapViewController: MKMapViewDelegate {
-    
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         let center = getCenterLocation(for: mapView)
         
@@ -160,32 +182,33 @@ extension mapViewController: MKMapViewDelegate {
         
         geoCoder.cancelGeocode()
         
+        print("...\n...\n...\n...\n...\n...\n...\n")
         geoCoder.reverseGeocodeLocation(center) { [weak self] (placemarks, error) in
             guard let self = self else { return }
             
             if let _ = error {
-                //TODO: Show alert informing the user
+                // to do: show alert informing the user
                 return
             }
-            
             guard let placemark = placemarks?.first else {
-                //TODO: Show alert informing the user
+                // to do: show alert informing the user
                 return
             }
             
             let streetNumber = placemark.subThoroughfare ?? ""
             let streetName = placemark.thoroughfare ?? ""
+            let cityName = placemark.locality ?? ""
             
             DispatchQueue.main.async {
-                self.addressLabel.text = "\(streetNumber) \(streetName)"
+                self.addressLabel.text = "\(streetNumber) \(streetName), \(cityName)"
             }
         }
     }
     
-    
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let renderer = MKPolylineRenderer(overlay: overlay as! MKPolyline)
-        renderer.strokeColor = .blue
+        renderer.strokeColor = .systemBlue
+        renderer.lineWidth = 4
         
         return renderer
     }
