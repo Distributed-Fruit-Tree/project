@@ -21,6 +21,7 @@
 		E8BD6F4126471BEC00D5D27A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8BD6F3F26471BEC00D5D27A /* LaunchScreen.storyboard */; };
 		E8BD6F4C26471BED00D5D27A /* DFTTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BD6F4B26471BED00D5D27A /* DFTTests.swift */; };
 		E8BD6F5726471BED00D5D27A /* DFTUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BD6F5626471BED00D5D27A /* DFTUITests.swift */; };
+		EE6F12F3265C973B0070FB89 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6F12F2265C973B0070FB89 /* EditProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		E8BD6F5226471BED00D5D27A /* DFTUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DFTUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8BD6F5626471BED00D5D27A /* DFTUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DFTUITests.swift; sourceTree = "<group>"; };
 		E8BD6F5826471BED00D5D27A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EE6F12F2265C973B0070FB89 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +156,7 @@
 				E8BD6F4226471BEC00D5D27A /* Info.plist */,
 				E8B5F0C92650417D0056C55F /* LoginViewController.swift */,
 				E8B5F0DD26504EA40056C55F /* ProfileViewController.swift */,
+				EE6F12F2265C973B0070FB89 /* EditProfileViewController.swift */,
 				1E87790A265984EE00AADA9F /* mapViewController.swift */,
 			);
 			path = DFT;
@@ -421,6 +424,7 @@
 				1E87790B265984EE00AADA9F /* mapViewController.swift in Sources */,
 				E8BD6F3526471BE900D5D27A /* AppDelegate.swift in Sources */,
 				E8BD6F3726471BE900D5D27A /* SceneDelegate.swift in Sources */,
+				EE6F12F3265C973B0070FB89 /* EditProfileViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
