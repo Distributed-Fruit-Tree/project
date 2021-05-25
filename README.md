@@ -15,6 +15,11 @@ Distributed Fruit Market connects people who have fruit trees  with people who w
 Fruit trees produce a lot of fruit, usually more than one family can use. Rather than have the fruit rot, Distributed Fruit Market can eliminate this waste. 
 
 
+**Possible Names:**
+Fruitshare
+Harvest
+FruitNearMe
+
 
 **Brainstorming**
 User Stories: 
@@ -56,7 +61,7 @@ Idea: Shoppers and Producers have:
 
 
 
-### App Evaluation
+### Product Evaluation
 [Evaluation of your app across the following attributes]
 - **Category:**
     - Map & selling app?
