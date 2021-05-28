@@ -20,8 +20,8 @@ class EditProfileViewController: UIViewController {
     @IBOutlet weak var editFruitOfferedTextField: UITextField!
  
     @IBAction func onSaveButton(_ sender: Any) {
-        //let profile = PFObject(className: "Profile")
-        let profile = PFUser.current()!["profile"] as! PFObject
+        let profile = PFObject(className: "Profile")
+        //let profile = PFUser.current()!["profile"] as! PFObject
         profile["username"] = editUsernameTextField.text
         profile["author"] = PFUser.current()!
         

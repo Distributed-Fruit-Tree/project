@@ -45,6 +45,7 @@ class LoginViewController: UIViewController {
         //user["phone"] = "415-392-0202"
         user.signUpInBackground { (success, error) in
             if success{
+                /*
                 //ADDED THIS BC PROFILE SHOULD EXIST WHEN YOU MAKE ACCOUNT AND SHOULD NOT BE CREATED EVERY TIME YOU EDIT PROFILE
                 let profile = PFObject(className: "Profile")
                 profile["user"] = user
@@ -58,6 +59,7 @@ class LoginViewController: UIViewController {
                 }
                 user["profile"] = profile
                 user.saveInBackground()
+                */
                 self.performSegue(withIdentifier: "loginSegue", sender: nil)
             }
             else{
