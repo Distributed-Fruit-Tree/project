@@ -30,14 +30,34 @@ class LoginViewController: UIViewController {
     
     @IBAction func onSignUp(_ sender: Any) {
         var user = PFUser()
+        print(usernameTextField.text)
+        print(passwordTextField.text)
         user.username = usernameTextField.text
         user.password = passwordTextField.text
+        
+        
+        //print(profile.objectId)
+        //user["profileID"] = profile.objectId
+        
         
         //user.email = "email@example.com"
         // other fields can be set just like with PFObject
         //user["phone"] = "415-392-0202"
         user.signUpInBackground { (success, error) in
             if success{
+                //ADDED THIS BC PROFILE SHOULD EXIST WHEN YOU MAKE ACCOUNT AND SHOULD NOT BE CREATED EVERY TIME YOU EDIT PROFILE
+                let profile = PFObject(className: "Profile")
+                profile["user"] = user
+                profile.saveInBackground { (success, error) in
+                    if success {
+                        self.dismiss(animated: true, completion: nil)
+                        print("saved!")
+                    } else {
+                        print("error!")
+                    }
+                }
+                user["profile"] = profile
+                user.saveInBackground()
                 self.performSegue(withIdentifier: "loginSegue", sender: nil)
             }
             else{

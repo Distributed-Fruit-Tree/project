@@ -11,6 +11,7 @@
 		37CB2A1568264A2527114061 /* Pods_DFT_DFTUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25791613F6536E560332C1AB /* Pods_DFT_DFTUITests.framework */; };
 		5A94DCBB40C1D9EA02268470 /* Pods_DFT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B95DA3D91C7435F21F4AD54 /* Pods_DFT.framework */; };
 		7D279C0A5BBDEF66B967755E /* Pods_DFTTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25D966E5CA5E885897CC82F /* Pods_DFTTests.framework */; };
+		E88059B9266168F100872ACD /* AppIcon.appiconset in Resources */ = {isa = PBXBuildFile; fileRef = E88059B8266168F100872ACD /* AppIcon.appiconset */; };
 		E8B5F0CA2650417D0056C55F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B5F0C92650417D0056C55F /* LoginViewController.swift */; };
 		E8B5F0DE26504EA40056C55F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B5F0DD26504EA40056C55F /* ProfileViewController.swift */; };
 		E8BD6F3526471BE900D5D27A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BD6F3426471BE900D5D27A /* AppDelegate.swift */; };
@@ -52,6 +53,7 @@
 		64F20DD7EDECB4577996E275 /* Pods-DFTTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DFTTests.debug.xcconfig"; path = "Target Support Files/Pods-DFTTests/Pods-DFTTests.debug.xcconfig"; sourceTree = "<group>"; };
 		762EE6D95F782A81796F8787 /* Pods-DFT-DFTUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DFT-DFTUITests.debug.xcconfig"; path = "Target Support Files/Pods-DFT-DFTUITests/Pods-DFT-DFTUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E25D966E5CA5E885897CC82F /* Pods_DFTTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DFTTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E88059B8266168F100872ACD /* AppIcon.appiconset */ = {isa = PBXFileReference; lastKnownFileType = folder; name = AppIcon.appiconset; path = "../../../Documents/App Logos/iOS/AppIcon.appiconset"; sourceTree = "<group>"; };
 		E8B5F0C92650417D0056C55F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E8B5F0DD26504EA40056C55F /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		E8BD6F3126471BE900D5D27A /* DFT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DFT.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -152,6 +154,7 @@
 				E8BD6F3826471BE900D5D27A /* ViewController.swift */,
 				E8BD6F3A26471BE900D5D27A /* Main.storyboard */,
 				E8BD6F3D26471BEC00D5D27A /* Assets.xcassets */,
+				E88059B8266168F100872ACD /* AppIcon.appiconset */,
 				E8BD6F3F26471BEC00D5D27A /* LaunchScreen.storyboard */,
 				E8BD6F4226471BEC00D5D27A /* Info.plist */,
 				E8B5F0C92650417D0056C55F /* LoginViewController.swift */,
@@ -288,6 +291,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E88059B9266168F100872ACD /* AppIcon.appiconset in Resources */,
 				E8BD6F4126471BEC00D5D27A /* LaunchScreen.storyboard in Resources */,
 				E8BD6F3E26471BEC00D5D27A /* Assets.xcassets in Resources */,
 				E8BD6F3C26471BE900D5D27A /* Main.storyboard in Resources */,
