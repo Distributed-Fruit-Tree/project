@@ -98,16 +98,19 @@ Idea: Shoppers and Producers have:
 
 **Required Must-have Stories**
 
-* User (Forager) can create an account
-* User (Forager) can update profile
-* User (Forager) Sees a map view of resources in area
-* User (Forager) can select a resource
-* User (Forager) can see data of that specific resource
-* User (Forager) can search for a type of resource
-* User (Forager) can apply filters to search
-* User (Producer) can create an account
-* User (producer) can update profile
-* User (producer) can add different resources to profile
+[X] User (Forager) knows the name and logo of the app they are using
+[X] User (Forager) can navigate between their user profile, messages, and a map
+[X] User (Forager) can create an account
+[ehh somewhat there] User (Forager) can update profile
+[X] User (Forager) Sees a map view
+[ ] The map view contains resources in area
+[ ] User (Forager) can select a resource
+[ ] User (Forager) can see data of that specific resource
+[ ] User (Forager) can search for a type of resource
+[ ] User (Forager) can apply filters to search
+[ ] User (Producer) can create an account
+[ ] User (producer) can update profile
+[ ] User (producer) can add different resources to profile
 
 
 
