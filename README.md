@@ -1,5 +1,6 @@
 Original App Design Project - README Template
 ===
+<img src='https://github.com/Distributed-Fruit-Tree/project/blob/main/ezgif.com-gif-maker%20(10).gif' title='Work in Progress' width='' alt='App Walkthrough' />
 
 # Distributed Fruit Tree App
 
