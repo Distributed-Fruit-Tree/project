@@ -44,8 +44,8 @@ class EditProfileViewController: UIViewController {
                 print("error!")
             }
         }
-        
         /*
+        
         let profileID = PFUser.current()!["profileID"] as! String
         let query = PFQuery(className:"Profile")
         query.getObjectInBackground(withId: profileID) { (profile, error) in
@@ -76,6 +76,7 @@ class EditProfileViewController: UIViewController {
             }
         }
  */
+ 
     }
 
         /*

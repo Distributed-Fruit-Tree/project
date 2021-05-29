@@ -28,6 +28,51 @@ class ProfileViewController: UIViewController {
         //print(PFUser.current()?.username)
         let user = PFUser.current()
         print(user)
+        /*
+        var query = PFQuery(className:"Profile")
+        
+        query.getObjectInBackgroundWithId(profileID){
+          (profile: PFObject?, error: NSError?) -> Void in
+            if error != nil{
+                print(error)
+            }else if let player = player{
+                profile["username"] = editUsernameTextField.text
+                profile["author"] = PFUser.current()!
+                
+                //added below
+                profile["bio"] = editBioTextField.text
+                profile["address"] = editAddressTextField.text
+                profile["fruits"] = editFruitOfferedTextField.text
+                
+                let imageData = editProfilePictureImageView.image!.pngData()
+                let file = PFFileObject(name: "image.png", data: imageData!)
+                
+                profile["image"] = file
+                
+                profile.saveInBackground { (success, error) in
+                    if success {
+                        self.dismiss(animated: true, completion: nil)
+                        print("saved!")
+                    } else {
+                        print("error!")
+                    }
+                }
+            }
+ */
+        
+        var profID = "KDdjf7ebPK"
+        var query = PFQuery(className:"Profile")
+        query.getObjectInBackgroundWithId(profID){
+            (profile: PFObject?, error: NSError?) -> Void in
+            if error == nil && profile != nil {
+              print(profile)
+            } else {
+              print(error)
+            }
+          }
+        
+        
+        /*
         let profile = user?["profile"] as? PFObject
         print(profile)
         if(profile != nil){
@@ -60,6 +105,7 @@ class ProfileViewController: UIViewController {
             }
              */
         }
+ */
         
     }
 
