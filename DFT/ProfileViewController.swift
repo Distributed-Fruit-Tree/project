@@ -71,7 +71,18 @@ class ProfileViewController: UIViewController {
             }
           }
         
+        //THE LINES BELOW ARE WHERE THE ISSUE OCCURS
+        //Specifically, it says that there is a key error because "bio" does not exist
+        //Each user is supposed to have a pointer to a profile object. It looks like this is 
+        //working because when I print out the "profile" i can see the object ID and this 
+        //corresponds to what I see on the on the back4app page. Additionally, it looks like the
+        //profile is set up correctly in the back4app because it has a column for "bio" and
+        //the other keys. I feel like there is some issue with how we are using the pointers to different objects
         
+        //Also, I don't think the issues are related, but I'm not sure if I have things set up correctly to "link"
+        //the user and the profile (have them point to each other) since you have to save each object first 
+        //before it lets you use a pointer to it. This issue would be here:
+        // https://github.com/Distributed-Fruit-Tree/project/blob/c5e74d556259b3da830aa71d20f765e64d552481/DFT/LoginViewController.swift#L31
         /*
         let profile = user?["profile"] as? PFObject
         print(profile)
