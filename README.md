@@ -17,21 +17,21 @@ A single fruit tree can produce 100's of pounds of fruit a year. Most owners of 
 
 
 **Possible Names:**
-Fruitshare
-Harvest
-FruitNearMe
+-Fruitshare
+-Harvest
+-FruitNearMe
 
 
 **Brainstorming**
 User Stories: 
 
-Basic Basic: 
-Want to allow owners of fruit trees to market/sell fruit trees/garden produce
-Want to allow people who want fruit to find the fruit being sold
-Map View
-List View
+Basic: 
+-Want to allow owners of fruit trees/garden to sell produce
+-Want to allow people who want fruit to find the fruit being sold
+-Map View
+-List View
 
-Question/thought: Should all users have ability to sell, or should users be separated and have different interfaces depending on whether they are a buyer or a seller
+Question/thought: Should all users have ability to sell, or should users be separated and have different interfaces depending on whether they are a buyer or a seller?
 
 Idea: Shoppers and Producers have:
     Profile: Picture, description/intro, instructions, Reviews/ratings (stars), location, 
