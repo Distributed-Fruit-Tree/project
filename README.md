@@ -26,10 +26,10 @@ A single fruit tree can produce 100's of pounds of fruit a year. Most owners of 
 User Stories: 
 
 Basic: 
--Want to allow owners of fruit trees/garden to sell produce
--Want to allow people who want fruit to find the fruit being sold
--Map View
--List View
+* Want to allow owners of fruit trees/garden to sell produce
+* Want to allow people who want fruit to find the fruit being sold
+* Map View
+* List View
 
 Question/thought: Should all users have ability to sell, or should users be separated and have different interfaces depending on whether they are a buyer or a seller?
 
