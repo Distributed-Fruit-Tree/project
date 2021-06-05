@@ -12,8 +12,8 @@ Original App Design Project - README Template
 
 ## Overview
 ### Description
-Distributed Fruit Market connects people who have fruit trees  with people who want locally-grown organic fruit.
-Fruit trees produce a lot of fruit, usually more than one family can use. Rather than have the fruit rot, Distributed Fruit Market can eliminate this waste. 
+Distributed Fruit Tree connects people who have fruit trees with people who want locally-grown organic fruit.
+A single fruit tree can produce 100's of pounds of fruit a year. Most owners of fruit trees do not consume all of the fruit produced, and most of the fruit is left to rot on the tree or on the ground. At the same time, there is a growing market for sustainably sourced local, organic produce. This app connects producers with more fruit than they need, with foragers who are looking for resources.
 
 
 **Possible Names:**
