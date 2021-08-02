@@ -17,11 +17,12 @@ class mapViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     
     let locationManager = CLLocationManager()
-    let regionInMeters: Double = 6000
+    let regionInMeters: Double = 4400
     var previousLocation: CLLocation?
     
     let geoCoder = CLGeocoder()
     var directionsArray: [MKDirections] = []
+    var tapLocation = CGPoint.init()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -109,13 +110,21 @@ class mapViewController: UIViewController {
             for route in response.routes {
                 let steps = route.steps
                 self.mapView.addOverlay(route.polyline)
-                self.mapView.setVisibleMapRect(route.polyline.boundingMapRect, animated: true)
+                let bound = route.polyline.boundingMapRect
+                
+                let padding = UIEdgeInsets.init(top: 80, left: 60, bottom: 120, right: 60)
+                
+                self.mapView.setVisibleMapRect(bound, edgePadding: padding, animated: true)
             }
         }
     }
     
     func createDirectionsRequest(from coordinate: CLLocationCoordinate2D) -> MKDirections.Request {
-        let destinationCoordinate = getCenterLocation(for: mapView).coordinate
+        // let destinationCoordinate = getCenterLocation(for: mapView).coordinate
+        
+        let CLLocCoord2D: CLLocationCoordinate2D = self.mapView.convert(self.tapLocation, toCoordinateFrom: nil)
+        
+        let destinationCoordinate = CLLocCoord2D
         let startingLocation = MKPlacemark(coordinate: coordinate)
         let destination = MKPlacemark(coordinate: destinationCoordinate)
         
@@ -131,8 +140,9 @@ class mapViewController: UIViewController {
     
     func resetMapView(withNew directions: MKDirections) {
         mapView.removeOverlays(mapView.overlays)
-        directionsArray.append(directions)
         let _ = directionsArray.map { $0.cancel() }
+        directionsArray.append(directions)
+        
         // directionsArray.removeAll()
     }
     
@@ -153,6 +163,87 @@ class mapViewController: UIViewController {
         goButtonView.layer.shadowOffset = CGSize(width: 0, height: 4)
         goButtonView.layer.shadowRadius = 4
     }
+    
+    
+    @IBAction func didTapAddIcon(_ sender: UITapGestureRecognizer) {
+        
+        
+        print("...\n...\n...\n...\n...\n...\n...\n")
+        self.tapLocation = sender.location(in: self.mapView)
+        let CLLocCoord2D: CLLocationCoordinate2D = self.mapView.convert(self.tapLocation, toCoordinateFrom: nil)
+        
+        let geoCoder = CLGeocoder()
+        
+        let latitude: Double = CLLocCoord2D.latitude
+        let longitude: Double = CLLocCoord2D.longitude
+        
+        let CLLoc = CLLocation(latitude: latitude, longitude: longitude)
+        
+        var address = ""
+        
+        geoCoder.reverseGeocodeLocation(CLLoc, completionHandler: { (placemarks, error) -> Void in
+            
+            // Place details
+            var placeMark: CLPlacemark!
+            placeMark = placemarks?[0]
+            
+            // Location name
+            if let locationName = placeMark.location {
+                print(locationName)
+            }
+            
+            // Street address
+            if let street = placeMark.thoroughfare {
+                address += "\(street)"
+                print(street)
+            }
+            
+            // City
+            if let city = placeMark.locality {
+                if address == "" {
+                    address += "\(city)"
+                } else {
+                    address += ", \(city)"
+                }
+                print(city)
+            }
+            
+            // State
+            if let state = placeMark.administrativeArea {
+                if address == "" {
+                    address += "\(state)"
+                } else {
+                    address += ", \(state)"
+                }
+                print(state)
+            }
+            
+            // Zip code
+            if let zipCode = placeMark.postalCode {
+                print(zipCode)
+            }
+            
+            // Country
+            if let country = placeMark.country {
+                print(country)
+            }
+            
+            self.addressLabel.text = address
+        })
+        
+        
+        
+        
+        let locCoord = self.mapView.convert(tapLocation, toCoordinateFrom: self.mapView)
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = locCoord
+        annotation.title = "\(address)"
+        annotation.subtitle = "\(address)"
+        print(address)
+        
+        self.mapView.removeAnnotations(mapView.annotations)
+        self.mapView.addAnnotation(annotation)
+    }
 }
 
 extension mapViewController: CLLocationManagerDelegate {
@@ -171,8 +262,9 @@ extension mapViewController: CLLocationManagerDelegate {
     }
 }
 
-extension mapViewController: MKMapViewDelegate {
+extension mapViewController: MKMapViewDelegate {/*
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        print("...\n...\n...\n...\n...\n...\n...\n")
         let center = getCenterLocation(for: mapView)
         
         guard let previousLocation = self.previousLocation else { return }
@@ -182,7 +274,6 @@ extension mapViewController: MKMapViewDelegate {
         
         geoCoder.cancelGeocode()
         
-        print("...\n...\n...\n...\n...\n...\n...\n")
         geoCoder.reverseGeocodeLocation(center) { [weak self] (placemarks, error) in
             guard let self = self else { return }
             
@@ -203,13 +294,17 @@ extension mapViewController: MKMapViewDelegate {
                 self.addressLabel.text = "\(streetNumber) \(streetName), \(cityName)"
             }
         }
-    }
+    }*/
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        let renderer = MKPolylineRenderer(overlay: overlay as! MKPolyline)
-        renderer.strokeColor = .systemBlue
-        renderer.lineWidth = 4
-        
-        return renderer
+        mapView.delegate = self
+        if overlay.isKind(of: MKPolyline.self) {
+            let polyline = overlay
+            let renderer = MKPolylineRenderer(polyline: polyline as! MKPolyline)
+            renderer.strokeColor = UIColor.blue
+            renderer.lineWidth = 4.0
+            return renderer
+        }
+        return MKOverlayRenderer()
     }
 }
