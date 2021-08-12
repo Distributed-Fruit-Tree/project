@@ -26,6 +26,58 @@ class ProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        profileImageView.layer.cornerRadius = profileImageView.frame.height / 2
+        /*
+        let query = PFQuery(className: "Profile")
+        query.getObjectInBackground(withId: "") { (profile, error) -> Void in
+            
+            if profile != nil && error == nil {
+                // profile retrieved successfully
+                print(profile!["bio"] as! String)
+            } else {
+                // some error occurred
+                print(error)
+            }
+        }
+        */
+        let profile = PFUser.current()!
+        print(profile)
+        let query = PFQuery(className: "Profile")
+        query.whereKey("author", equalTo: profile)
+        query.findObjectsInBackground { (objects, error) in
+            if error != nil {
+                print(error)
+            } else {
+                if let users = objects {
+                    for user in users {
+                        print(user)
+                        self.bioLabel.text = user["bio"] as? String
+                        self.nameLabel.text = user["username"] as? String
+                        self.addressLabel.text = user["address"] as? String
+                        self.fruitLabel.text = user["fruits"] as? String
+                        self.ratingLabel.text = user["rating"] as? String
+                        // self.profileImageView.image = user["image"] as? UIImage
+                        let file = user["image"] as! PFFileObject
+                        file.getDataInBackground(block: { (data, error) -> Void in
+                            
+                            if error == nil {
+                                if let imagedata = data {
+                                    // successfully retrieved the data
+                                    let image = UIImage(data: imagedata)
+                                    
+                                    self.profileImageView.image = image
+                                }
+                            }
+                            
+                        })
+                    }
+                }
+            }
+        }
+
+        
+        
         /*
         let profile = PFUser.current()!["profile"] as? PFObject
         if(profile != nil){
