@@ -29,7 +29,7 @@ class LoginViewController: UIViewController {
     
     
     @IBAction func onSignUp(_ sender: Any) {
-        var user = PFUser()
+        let user = PFUser()
         print(usernameTextField.text)
         print(passwordTextField.text)
         user.username = usernameTextField.text
@@ -70,7 +70,9 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        usernameTextField.placeholder = "username..."
+        passwordTextField.placeholder = "password..."
+        passwordTextField.isSecureTextEntry = true
         // Do any additional setup after loading the view.
     }
     
