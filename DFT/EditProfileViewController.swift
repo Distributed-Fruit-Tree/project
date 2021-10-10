@@ -18,7 +18,8 @@ class EditProfileViewController: UIViewController {
     @IBOutlet weak var editBioTextField: UITextField!
     @IBOutlet weak var editAddressTextField: UITextField!
     @IBOutlet weak var editFruitOfferedTextField: UITextField!
- 
+
+    
     @IBAction func onSaveButton(_ sender: Any) {
         let profile = PFObject(className: "Profile")
         //let profile = PFUser.current()!["profile"] as! PFObject
@@ -31,7 +32,7 @@ class EditProfileViewController: UIViewController {
         profile["fruits"] = self.editFruitOfferedTextField.text
         
         let imageData = self.editProfilePictureImageView.image!.pngData()
-        let file = PFFileObject(name: "image.png", data: imageData!)
+        let file = PFFileObject(name: "defaultProfilePict", data: imageData!)
         
         profile["image"] = file
         
@@ -112,7 +113,10 @@ class EditProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        editUsernameTextField.delegate = self
+        editBioTextField.delegate = self
+        editAddressTextField.delegate = self
+        editFruitOfferedTextField.delegate = self
         // Do any additional setup after loading the view.
     }
 }
@@ -130,3 +134,9 @@ class EditProfileViewController: UIViewController {
     }
     */
 
+extension EditProfileViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder() // dismiss keyboard
+        return true
+    }
+}

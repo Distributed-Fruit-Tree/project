@@ -165,8 +165,8 @@
 				EE6F12F2265C973B0070FB89 /* EditProfileViewController.swift */,
 				1E87790A265984EE00AADA9F /* mapViewController.swift */,
 				E88059CF2662CC1E00872ACD /* AllMessagesTableViewController.swift */,
-				E88059D42662CC7E00872ACD /* MessagesTableViewController.swift */,
 				E88059D92662CD9500872ACD /* AllMessageTableViewCell.swift */,
+				E88059D42662CC7E00872ACD /* MessagesTableViewController.swift */,
 			);
 			path = DFT;
 			sourceTree = "<group>";

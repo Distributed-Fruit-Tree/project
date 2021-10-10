@@ -14,6 +14,8 @@ import MessageInputBar
 
 class ProfileViewController: UIViewController {
     
+    
+    
     @IBOutlet weak var bioLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
@@ -24,30 +26,18 @@ class ProfileViewController: UIViewController {
     
     var profile: PFObject!
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(false)
         
         profileImageView.layer.cornerRadius = profileImageView.frame.height / 2
-        /*
-        let query = PFQuery(className: "Profile")
-        query.getObjectInBackground(withId: "") { (profile, error) -> Void in
-            
-            if profile != nil && error == nil {
-                // profile retrieved successfully
-                print(profile!["bio"] as! String)
-            } else {
-                // some error occurred
-                print(error)
-            }
-        }
-        */
+        
         let profile = PFUser.current()!
         print(profile)
         let query = PFQuery(className: "Profile")
         query.whereKey("author", equalTo: profile)
         query.findObjectsInBackground { (objects, error) in
             if error != nil {
-                print(error)
+                print(error!)
             } else {
                 if let users = objects {
                     for user in users {
@@ -69,15 +59,29 @@ class ProfileViewController: UIViewController {
                                     self.profileImageView.image = image
                                 }
                             }
-                            
                         })
                     }
                 }
             }
         }
-
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
-        
+        /*
+        let query = PFQuery(className: "Profile")
+        query.getObjectInBackground(withId: "") { (profile, error) -> Void in
+            
+            if profile != nil && error == nil {
+                // profile retrieved successfully
+                print(profile!["bio"] as! String)
+            } else {
+                // some error occurred
+                print(error)
+            }
+        }
+        */
         /*
         let profile = PFUser.current()!["profile"] as? PFObject
         if(profile != nil){
@@ -121,6 +125,4 @@ class ProfileViewController: UIViewController {
  */
     }
 }
-      
-
 

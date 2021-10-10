@@ -9,14 +9,15 @@ import UIKit
 
 class AllMessageTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var ProfileView: UIImageView!
-    @IBOutlet weak var UsernameLabel: UILabel!
-    @IBOutlet weak var MessagePreviewLabel: UILabel!
+    @IBOutlet weak var profileView: UIImageView!
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var messagePreviewLabel: UILabel!
     
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        profileView.layer.cornerRadius = profileView.frame.height / 2
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
